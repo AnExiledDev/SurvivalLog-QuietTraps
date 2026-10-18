@@ -8,7 +8,7 @@ When a trap in Survival Log catches prey, it keeps playing a sound until you col
 
 - **Catch sounds muted**: every trap catch sound, including the Iron Animal Trap's rattle, is silenced by default.
 - **Pick which ones**: each catch sound has its own setting, so you can keep the ones you want to hear.
-- **Nothing else goes quiet**: the mod mutes three exact sounds and nothing else.
+- **Nothing else goes quiet**: the mod mutes four exact sounds and nothing else.
 
 The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together. The Iron Animal Trap also rattles while it holds a catch; that rattle goes with the same setting.
 

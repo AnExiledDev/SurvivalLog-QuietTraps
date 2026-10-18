@@ -16,6 +16,7 @@ public class CatchSoundsTests
         Assert.True(CatchSounds.ShouldMute(CatchSounds.LiveCaptureCage, muted));
         Assert.True(CatchSounds.ShouldMute(CatchSounds.SimpleBirdNet, muted));
         Assert.True(CatchSounds.ShouldMute(CatchSounds.OtherTraps, muted));
+        Assert.True(CatchSounds.ShouldMute(CatchSounds.IronAnimalTrapRattle, muted));
     }
 
     [Fact]
@@ -43,7 +44,7 @@ public class CatchSoundsTests
     {
         Assert.Equal(new[] { CatchSounds.LiveCaptureCage }, CatchSounds.PathsToMute(new MuteChoice(true, false, false)));
         Assert.Equal(new[] { CatchSounds.SimpleBirdNet }, CatchSounds.PathsToMute(new MuteChoice(false, true, false)));
-        Assert.Equal(new[] { CatchSounds.OtherTraps }, CatchSounds.PathsToMute(new MuteChoice(false, false, true)));
+        Assert.Equal(new[] { CatchSounds.OtherTraps, CatchSounds.IronAnimalTrapRattle }, CatchSounds.PathsToMute(new MuteChoice(false, false, true)));
         Assert.Empty(CatchSounds.PathsToMute(new MuteChoice(false, false, false)));
     }
 
@@ -58,9 +59,10 @@ public class CatchSoundsTests
     [Fact]
     public void The_paths_are_the_ones_the_game_plays()
     {
-        // Copied from TrapManager.GetCaptureSoundPath; a typo here would mute nothing and every other test would still pass.
+        // Copied from TrapManager.GetCaptureSoundPath and, for the rattle, the sound log; a typo here would mute nothing and every other test would still pass.
         Assert.Equal("event:/UI/xianjing_bushoulong", CatchSounds.LiveCaptureCage);
         Assert.Equal("event:/UI/xianjing_buniaolong", CatchSounds.SimpleBirdNet);
         Assert.Equal("event:/UI/xianjing_bushujia02", CatchSounds.OtherTraps);
+        Assert.Equal("event:/UI/xianjing_Metalbushujia", CatchSounds.IronAnimalTrapRattle);
     }
 }

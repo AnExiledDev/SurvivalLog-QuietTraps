@@ -6,11 +6,11 @@ When a trap in Survival Log catches prey, it keeps playing a sound until you col
 
 ## Features
 
-- **Catch sounds muted**: all three of the game's trap catch sounds are silenced by default.
+- **Catch sounds muted**: every trap catch sound, including the Iron Animal Trap's rattle, is silenced by default.
 - **Pick which ones**: each catch sound has its own setting, so you can keep the ones you want to hear.
 - **Nothing else goes quiet**: the mod mutes three exact sounds and nothing else.
 
-The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together.
+The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together. The Iron Animal Trap also rattles while it holds a catch; that rattle goes with the same setting.
 
 Quiet Traps only changes what you hear. It adds nothing to your save and does not edit game files. You can remove it at any time.
 
@@ -38,7 +38,7 @@ Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created th
 
 Built against BepInEx `6.0.0-be.788`.
 
-Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.1.1 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
+Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.1.2 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
 
 If a trap sound still plays, set `LogSounds` to `true`, stay near the trap until you hear it, then look in `BepInEx\quiet-traps.log` for the sound that started at that time.
 

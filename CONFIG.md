@@ -10,7 +10,7 @@ Each setting mutes the sound a trap plays while it holds a catch. Set one to `fa
 | --- | --- | --- |
 | `LiveCaptureCage` | `true` | Live Capture Cage |
 | `SimpleBirdNet` | `true` | Simple Bird Net |
-| `OtherTraps` | `true` | Simple Mousetrap, Iron Animal Trap and Auto Trap Cage. The game gives all three the same sound, so they share one setting. |
+| `OtherTraps` | `true` | Simple Mousetrap, Iron Animal Trap and Auto Trap Cage. The game gives all three the same sound, so they share one setting. It also mutes the Iron Animal Trap's rattle. |
 
 ## Diagnostics
 

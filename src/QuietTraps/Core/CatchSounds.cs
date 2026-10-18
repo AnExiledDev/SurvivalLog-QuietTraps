@@ -19,13 +19,23 @@ public static class CatchSounds
     /// <summary>Played by the Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage.</summary>
     public const string OtherTraps = "event:/UI/xianjing_bushujia02";
 
+    /// <summary>
+    /// The Iron Animal Trap's rattle, on top of the shared sound. Not in the game's code: its caught model plays it, so
+    /// it was found with the sound log, starting together with the other catch sounds when a game loads.
+    /// </summary>
+    public const string IronAnimalTrapRattle = "event:/UI/xianjing_Metalbushujia";
+
     public static IReadOnlySet<string> PathsToMute(MuteChoice choice)
     {
         var paths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         if (choice.LiveCaptureCage) paths.Add(LiveCaptureCage);
         if (choice.SimpleBirdNet) paths.Add(SimpleBirdNet);
-        if (choice.OtherTraps) paths.Add(OtherTraps);
+        if (choice.OtherTraps)
+        {
+            paths.Add(OtherTraps);
+            paths.Add(IronAnimalTrapRattle);
+        }
 
         return paths;
     }

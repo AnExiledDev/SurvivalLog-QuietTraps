@@ -9,7 +9,7 @@ public class CatchSoundsTests
     private static readonly MuteChoice All = new(true, true, true);
 
     [Fact]
-    public void By_default_every_trap_catch_sound_is_muted()
+    public void With_every_setting_on_every_trap_catch_sound_is_muted()
     {
         var muted = CatchSounds.PathsToMute(All);
 

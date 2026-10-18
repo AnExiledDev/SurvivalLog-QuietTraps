@@ -9,6 +9,7 @@ When a trap in Survival Log catches prey, it keeps playing a sound until you col
 - **Catch sounds muted**: every trap catch sound, including the Iron Animal Trap's rattle, is silenced by default.
 - **Pick which ones**: each catch sound has its own setting, so you can keep the ones you want to hear.
 - **Nothing else goes quiet**: the mod mutes four exact sounds and nothing else.
+- **Find a missed sound**: turn on `LogSounds` and the mod writes the sounds it sees to a log file.
 
 The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together. The Iron Animal Trap also rattles while it holds a catch; that rattle goes with the same setting.
 
@@ -28,7 +29,7 @@ Quiet Traps only changes what you hear. It adds nothing to your save and does no
 
 ## Uninstall
 
-Delete `QuietTraps.dll` from the `BepInEx\plugins` folder. For a clean slate, also delete `BepInEx\config\com.dev.survivallog.quiettraps.cfg`.
+Delete `QuietTraps.dll` from the `BepInEx\plugins` folder. For a clean slate, also delete `BepInEx\config\com.dev.survivallog.quiettraps.cfg` and, if it exists, `BepInEx\quiet-traps.log`.
 
 ## Configuration
 
@@ -40,11 +41,13 @@ Built against BepInEx `6.0.0-be.788`.
 
 Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.1.3 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
 
-If a trap sound still plays, set `LogSounds` to `true`, stay near the trap until you hear it, then look in `BepInEx\quiet-traps.log` for the sound that started at that time.
+## Known issues
+
+None known. If a trap sound still plays, set `LogSounds` to `true` and start the game. Then look in `BepInEx\quiet-traps.log` for a sound with `xianjing` in its name that is not marked `(muted)`, and send that line on Discord.
 
 ## Feedback and bug reports
 
-Found a bug, have an idea, or something feels off? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also [open an issue](https://github.com/AnExiledDev/SurvivalLog-QuietTraps/issues). When reporting a bug, attach `BepInEx\LogOutput.log`.
+Found a bug, have an idea, or something feels off? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also [open an issue](https://github.com/AnExiledDev/SurvivalLog-QuietTraps/issues). When reporting a bug, attach `BepInEx\LogOutput.log` and, if you turned on `LogSounds`, `BepInEx\quiet-traps.log`.
 
 ## Build
 

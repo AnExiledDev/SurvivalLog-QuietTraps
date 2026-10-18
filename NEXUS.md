@@ -17,7 +17,7 @@ Quiet Traps only changes what you hear. It adds nothing to your save and does no
 Works in English and Chinese.
 
 [size=5]Known issues[/size]
-None known. If a trap sound still plays, turn on [font=Courier New]LogSounds[/font] in the config, stay near the trap until you hear it, then look in [font=Courier New]BepInEx\quiet-traps.log[/font] for the sound that started at that time.
+None known. If a trap sound still plays, turn on [font=Courier New]LogSounds[/font] in the config and start the game. Then look in [font=Courier New]BepInEx\quiet-traps.log[/font] for a sound with [font=Courier New]xianjing[/font] in its name that is not marked [font=Courier New](muted)[/font], and send that line on Discord.
 
 [size=5]Requirements[/size]
 [list]
@@ -40,7 +40,7 @@ Delete [font=Courier New]QuietTraps.dll[/font] from the [font=Courier New]BepInE
 To change settings, edit [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font] while the game is closed (see [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url] for every setting). Changes apply at the next game start.
 
 [size=5]Feedback[/size]
-Found a bug or have an idea? Come say hi on the [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url], or leave a comment here. For bugs, please include [font=Courier New]BepInEx\LogOutput.log[/font] and [font=Courier New]BepInEx\quiet-traps.log[/font].
+Found a bug or have an idea? Come say hi on the [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url], or leave a comment here. For bugs, please include [font=Courier New]BepInEx\LogOutput.log[/font] and, if you turned on [font=Courier New]LogSounds[/font], [font=Courier New]BepInEx\quiet-traps.log[/font].
 
 [size=5]Source and license[/size]
 Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps]github.com/AnExiledDev/SurvivalLog-QuietTraps[/url]
@@ -52,18 +52,18 @@ Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-QuietTrap
 
 [size=5]主要功能[/size]
 [list]
-[*][b]捕获声音静音[/b]：所有陷阱的捕获声音默认都会被静音，包括「铁制捕兽夹」的晃动声。[/*]
+[*][b]捕获声音静音[/b]：所有陷阱的捕获声音默认都会被静音，包括「铁制捕兽夹」的哐啷声。[/*]
 [*][b]自行选择[/b]：每种捕获声音都有单独的设置，想听的可以保留。[/*]
 [*][b]其他声音照常[/b]：模组只静音四个指定的声音，其他一概不动。[/*]
 [/list]
-游戏里有五种陷阱，但只有三种捕获声音。「活捉笼」和「简易捕鸟网」各有自己的声音。「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」共用一个声音，所以它们一起开关。「铁制捕兽夹」捕获猎物后还会发出晃动声，这个声音也归同一项设置。
+游戏里有五种陷阱，但只有三种捕获声音。「活捉笼」和「简易捕鸟网」各有自己的声音。「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」共用一个声音，所以它们一起开关。「铁制捕兽夹」捕获猎物后还会发出哐啷声，这个声音也归同一项设置。
 
 Quiet Traps 只改变你听到的声音，不会往存档里添加任何内容，也不会修改游戏文件，随时可以移除。
 
 支持英文和中文。
 
 [size=5]已知问题[/size]
-目前没有。如果仍能听到某个陷阱声音，在配置中打开 [font=Courier New]LogSounds[/font]，待在陷阱旁直到听到这个声音，然后在 [font=Courier New]BepInEx\quiet-traps.log[/font] 中查找那个时间开始播放的声音。
+目前没有。如果仍能听到某个陷阱声音，在配置中打开 [font=Courier New]LogSounds[/font] 并启动游戏，然后在 [font=Courier New]BepInEx\quiet-traps.log[/font] 中找到名称含 [font=Courier New]xianjing[/font] 且没有标注 [font=Courier New](muted)[/font] 的声音，把那一行发到 Discord。
 
 [size=5]前置要求[/size]
 [list]
@@ -86,7 +86,7 @@ Quiet Traps 只改变你听到的声音，不会往存档里添加任何内容�
 如需修改设置，请在游戏关闭时编辑 [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font]。配置文件中每项设置都有中文说明，完整说明见 [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url]（英文）。修改会在下次启动游戏时生效。
 
 [size=5]反馈[/size]
-发现 bug 或有好点子？欢迎来 [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url] 打个招呼，或在这里留言。报告 bug 时，请附上 [font=Courier New]BepInEx\LogOutput.log[/font] 和 [font=Courier New]BepInEx\quiet-traps.log[/font]。
+发现 bug 或有好点子？欢迎来 [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url] 打个招呼，或在这里留言。报告 bug 时，请附上 [font=Courier New]BepInEx\LogOutput.log[/font]；如果打开了 [font=Courier New]LogSounds[/font]，也请附上 [font=Courier New]BepInEx\quiet-traps.log[/font]。
 
 [size=5]源代码与许可[/size]
 基于 MIT 许可开源：[url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps]github.com/AnExiledDev/SurvivalLog-QuietTraps[/url]

@@ -9,10 +9,11 @@ using QuietTraps.Core;
 namespace QuietTraps.Adapters;
 
 /// <summary>
-/// Hooks on FMOD's EventDescription.createInstance and EventInstance.start, which every sound passes through, including
-/// the ones a model plays on its own without going through the game's FmodManager. A muted sound gets its volume set to
-/// zero when it is created and is never started, so nothing it would trigger plays either. With logging on, the first
-/// starts of each path go to the sound log.
+/// Hooks on FMOD's EventInstance.start and EventDescription.createInstance, which every sound passes through, including
+/// the ones a model plays on its own without going through the game's FmodManager. A muted sound is never started, so
+/// nothing it would trigger plays either; that is what silences it. Its volume is also set to zero when it is created,
+/// as a fallback in case something starts it another way. With logging on, the first starts of each path go to the
+/// sound log.
 /// </summary>
 internal static class InstanceGate
 {

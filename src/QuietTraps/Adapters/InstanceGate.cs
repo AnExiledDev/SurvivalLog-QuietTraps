@@ -9,9 +9,10 @@ using QuietTraps.Core;
 namespace QuietTraps.Adapters;
 
 /// <summary>
-/// A postfix on FMOD's EventDescription.createInstance, which every sound passes through, including the ones a model
-/// plays on its own without going through the game's FmodManager. A muted sound gets its volume set to zero, and with
-/// logging on, the first starts of each path go to the sound log.
+/// Hooks on FMOD's EventDescription.createInstance and EventInstance.start, which every sound passes through, including
+/// the ones a model plays on its own without going through the game's FmodManager. A muted sound gets its volume set to
+/// zero when it is created and is never started, so nothing it would trigger plays either. With logging on, the first
+/// starts of each path go to the sound log.
 /// </summary>
 internal static class InstanceGate
 {
@@ -31,17 +32,26 @@ internal static class InstanceGate
         _write = write;
         _log = log;
 
+        Hook(harmony, typeof(EventDescription), nameof(EventDescription.createInstance), postfix: nameof(SilenceIfMuted));
+        Hook(harmony, typeof(EventInstance), nameof(EventInstance.start), prefix: nameof(SkipStartIfMuted));
+    }
+
+    private static void Hook(Harmony harmony, Type type, string method, string? prefix = null, string? postfix = null)
+    {
+        var name = $"{type.Name}.{method}";
+
         try
         {
-            var original = AccessTools.Method(typeof(EventDescription), nameof(EventDescription.createInstance))
-                ?? throw new MissingMethodException(nameof(EventDescription), nameof(EventDescription.createInstance));
+            var original = AccessTools.Method(type, method) ?? throw new MissingMethodException(type.Name, method);
 
-            harmony.Patch(original, postfix: new HarmonyMethod(typeof(InstanceGate), nameof(SilenceIfMuted)));
-            log.LogInfo("hooked EventDescription.createInstance");
+            harmony.Patch(original,
+                prefix: prefix is null ? null : new HarmonyMethod(typeof(InstanceGate), prefix),
+                postfix: postfix is null ? null : new HarmonyMethod(typeof(InstanceGate), postfix));
+            _log?.LogInfo("hooked " + name);
         }
         catch (Exception ex)
         {
-            log.LogWarning("could not hook EventDescription.createInstance: " + ex.Message);
+            _log?.LogWarning($"could not hook {name}: {ex.Message}");
         }
     }
 
@@ -51,16 +61,37 @@ internal static class InstanceGate
         {
             var path = PathOf(__0);
 
-            if (path is null) return;
-
-            var isMuted = CatchSounds.ShouldMute(path, _mutedPaths);
-
-            if (isMuted) __0.setVolume(0f);
-            if (_sightings?.ShouldLog(path) == true) _write($"started {path}{(isMuted ? " (muted)" : "")}");
+            if (path is not null && CatchSounds.ShouldMute(path, _mutedPaths)) __0.setVolume(0f);
         }
         catch (Exception ex)
         {
             ReportFailureOnce(ex);
+        }
+    }
+
+    /// <summary>Returning false skips the start and reports success, so the caller carries on as if the sound played.</summary>
+    private static bool SkipStartIfMuted(ref EventInstance __instance, ref RESULT __result)
+    {
+        try
+        {
+            var path = PathOf(__instance);
+
+            if (path is null) return true;
+
+            var isMuted = CatchSounds.ShouldMute(path, _mutedPaths);
+
+            if (_sightings?.ShouldLog(path) == true) _write($"started {path}{(isMuted ? " (muted)" : "")}");
+            if (!isMuted) return true;
+
+            __result = RESULT.OK;
+
+            return false;
+        }
+        catch (Exception ex)
+        {
+            ReportFailureOnce(ex);
+
+            return true;
         }
     }
 

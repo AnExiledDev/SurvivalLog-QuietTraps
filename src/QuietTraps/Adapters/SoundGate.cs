@@ -13,13 +13,12 @@ namespace QuietTraps.Adapters;
 /// </summary>
 internal static class SoundGate
 {
-    // Harmony prefixes are static, so the plan they read is too. Set once at load, read on the main thread only.
+    // Harmony prefixes are static, so the plan they read is too. Set and read on the main thread only.
     private static IReadOnlySet<string> _mutedPaths = new HashSet<string>();
     private static ManualLogSource? _log;
 
-    public static void Apply(Harmony harmony, IReadOnlySet<string> mutedPaths, ManualLogSource log)
+    public static void Apply(Harmony harmony, ManualLogSource log)
     {
-        _mutedPaths = mutedPaths;
         _log = log;
 
         foreach (var name in new[] { "PlayEnv3dAction", "PlayBattle3dAction" })
@@ -27,6 +26,8 @@ internal static class SoundGate
             Patch(harmony, name);
         }
     }
+
+    public static void Mute(IReadOnlySet<string> mutedPaths) => _mutedPaths = mutedPaths;
 
     private static void Patch(Harmony harmony, string target)
     {

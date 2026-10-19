@@ -25,16 +25,21 @@ internal static class InstanceGate
     private static ManualLogSource? _log;
     private static bool _hasReportedFailure;
 
-    /// <param name="sightings">Null when sound logging is off.</param>
-    public static void Apply(Harmony harmony, IReadOnlySet<string> mutedPaths, SoundSightings? sightings, Action<string> write, ManualLogSource log)
+    public static void Apply(Harmony harmony, ManualLogSource log)
     {
-        _mutedPaths = mutedPaths;
-        _sightings = sightings;
-        _write = write;
         _log = log;
 
         Hook(harmony, typeof(EventDescription), nameof(EventDescription.createInstance), postfix: nameof(SilenceIfMuted));
         Hook(harmony, typeof(EventInstance), nameof(EventInstance.start), prefix: nameof(SkipStartIfMuted));
+    }
+
+    public static void Mute(IReadOnlySet<string> mutedPaths) => _mutedPaths = mutedPaths;
+
+    /// <param name="sightings">Null when sound logging is off.</param>
+    public static void LogSounds(SoundSightings? sightings, Action<string> write)
+    {
+        _sightings = sightings;
+        _write = write;
     }
 
     private static void Hook(Harmony harmony, Type type, string method, string? prefix = null, string? postfix = null)

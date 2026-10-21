@@ -40,7 +40,7 @@ internal static class SoundGate
         }
         catch (Exception ex)
         {
-            _log?.LogWarning($"could not hook FmodManager.{target}: {ex.Message}");
+            _log?.LogError($"could not hook FmodManager.{target}: {ex.Message}");
         }
     }
 

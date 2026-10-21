@@ -41,7 +41,7 @@ Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created th
 
 Built against BepInEx `6.0.0-be.788`.
 
-Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.2.0 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
+Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.2.1 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
 
 ## Known issues
 

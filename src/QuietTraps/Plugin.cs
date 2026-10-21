@@ -13,7 +13,7 @@ namespace QuietTraps;
 public sealed class Plugin : BasePlugin
 {
     private const string Guid = "com.dev.survivallog.quiettraps";
-    private const string Version = "0.2.0";
+    private const string Version = "0.2.1";
 
     private SoundLog? _soundLog;
 

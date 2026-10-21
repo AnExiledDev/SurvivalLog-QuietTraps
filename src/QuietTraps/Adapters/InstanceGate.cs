@@ -57,7 +57,7 @@ internal static class InstanceGate
         }
         catch (Exception ex)
         {
-            _log?.LogWarning($"could not hook {name}: {ex.Message}");
+            _log?.LogError($"could not hook {name}: {ex.Message}");
         }
     }
 

@@ -2,6 +2,8 @@ Name: Quiet Traps
 Summary: Mutes the noise a trap keeps making after it catches something, including the Iron Animal Trap's rattle, so a yard full of traps stops nagging you until you collect. Setting, checking, moving and removing traps sound the same as always. Each catch sound has its own switch if you want to keep one.
 
 Description (BBCode):
+[center][img]https://sldb.core-directive.com/media/save/1-save-safe.png[/img][/center]
+
 When a trap catches prey, it keeps making noise until you collect the catch. With a few traps set, that adds up. Quiet Traps silences that sound, and only that sound: setting, moving, checking and removing traps still sound the same.
 
 [size=5]Main features[/size]

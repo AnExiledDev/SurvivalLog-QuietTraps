@@ -1,6 +1,6 @@
 # Quiet Traps settings
 
-Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created the first time the game starts with the mod. Change them in game on the Mod Manager's Mods screen, where they take effect at once, or edit the file while the game is closed. A trap that already holds a catch changes once you load a save. Delete the file to get the defaults back. Without Exiled's Toolkit installed, changes made on the Mods screen take effect at the next game start instead.
+Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created the first time the game starts with the mod. Change them in game on the Mod Manager's Mods screen, where they take effect at once, or edit the file while the game is closed. A trap that already holds a catch changes once you load a save. Delete the file to get the defaults back.
 
 ## Mute
 
@@ -16,4 +16,4 @@ Each setting mutes the sound a trap plays while it holds a catch. Set one to `fa
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `LogSounds` | `false` | Writes the first three starts of each sound to `BepInEx\quiet-traps.log` with the time, marked `(muted)` when this mod silenced it. Turn it on to find a trap sound that still plays: look for a sound with `xianjing` in its name that is not marked `(muted)`. The file starts fresh at each game start. |
+| `LogSounds` | `false` | Writes the first three starts of each sound to `BepInEx\quiet-traps.log` with the time, marked `(muted)` when this mod silenced it. Turn it on to find a trap sound that still plays: look for a sound with `xianjing` in its name that is not marked `(muted)`. Each game start adds its sounds below a `===== Quiet Traps` line. Past 1 MB the file is renamed to `quiet-traps.log.1` and started again. |

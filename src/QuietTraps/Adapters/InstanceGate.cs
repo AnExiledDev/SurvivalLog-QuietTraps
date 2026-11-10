@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BepInEx.Logging;
+using ExiledToolkit.Game;
 using FMOD;
 using FMOD.Studio;
-using HarmonyLib;
 using QuietTraps.Core;
 
 namespace QuietTraps.Adapters;
@@ -22,15 +21,16 @@ internal static class InstanceGate
     private static IReadOnlySet<string> _mutedPaths = new HashSet<string>();
     private static SoundSightings? _sightings;
     private static Action<string> _write = _ => { };
-    private static ManualLogSource? _log;
-    private static bool _hasReportedFailure;
+    private static PatchKit? _patches;
 
-    public static void Apply(Harmony harmony, ManualLogSource log)
+    public static void Apply(PatchKit patches)
     {
-        _log = log;
+        _patches = patches;
 
-        Hook(harmony, typeof(EventDescription), nameof(EventDescription.createInstance), postfix: nameof(SilenceIfMuted));
-        Hook(harmony, typeof(EventInstance), nameof(EventInstance.start), prefix: nameof(SkipStartIfMuted));
+        patches.Patch(typeof(InstanceGate), typeof(EventDescription), nameof(EventDescription.createInstance), postfix: nameof(SilenceIfMuted),
+            done: "hooked EventDescription.createInstance", consequence: "a muted sound started some other way still plays");
+        patches.Patch(typeof(InstanceGate), typeof(EventInstance), nameof(EventInstance.start), prefix: nameof(SkipStartIfMuted),
+            done: "hooked EventInstance.start", consequence: "trap sounds a model plays by itself are not muted and LogSounds writes nothing");
     }
 
     public static void Mute(IReadOnlySet<string> mutedPaths) => _mutedPaths = mutedPaths;
@@ -40,25 +40,6 @@ internal static class InstanceGate
     {
         _sightings = sightings;
         _write = write;
-    }
-
-    private static void Hook(Harmony harmony, Type type, string method, string? prefix = null, string? postfix = null)
-    {
-        var name = $"{type.Name}.{method}";
-
-        try
-        {
-            var original = AccessTools.Method(type, method) ?? throw new MissingMethodException(type.Name, method);
-
-            harmony.Patch(original,
-                prefix: prefix is null ? null : new HarmonyMethod(typeof(InstanceGate), prefix),
-                postfix: postfix is null ? null : new HarmonyMethod(typeof(InstanceGate), postfix));
-            _log?.LogInfo("hooked " + name);
-        }
-        catch (Exception ex)
-        {
-            _log?.LogError($"could not hook {name}: {ex.Message}");
-        }
     }
 
     private static void SilenceIfMuted(ref EventInstance __0)
@@ -114,11 +95,6 @@ internal static class InstanceGate
         return path;
     }
 
-    private static void ReportFailureOnce(Exception ex)
-    {
-        if (_hasReportedFailure) return;
-
-        _hasReportedFailure = true;
-        _log?.LogWarning("sound check failed, further failures are not logged: " + ex.Message);
-    }
+    /// <summary>Both hooks share one failure, so it is logged once for the two of them.</summary>
+    private static void ReportFailureOnce(Exception ex) => _patches?.Fail("checking a sound", ex);
 }

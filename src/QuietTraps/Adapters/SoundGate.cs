@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using BepInEx.Logging;
+using ExiledToolkit.Game;
 using GameCore.HotUpdate;
-using HarmonyLib;
 using QuietTraps.Core;
 
 namespace QuietTraps.Adapters;
@@ -15,34 +14,20 @@ internal static class SoundGate
 {
     // Harmony prefixes are static, so the plan they read is too. Set and read on the main thread only.
     private static IReadOnlySet<string> _mutedPaths = new HashSet<string>();
-    private static ManualLogSource? _log;
+    private static PatchKit? _patches;
 
-    public static void Apply(Harmony harmony, ManualLogSource log)
+    public static void Apply(PatchKit patches)
     {
-        _log = log;
+        _patches = patches;
 
         foreach (var name in new[] { "PlayEnv3dAction", "PlayBattle3dAction" })
         {
-            Patch(harmony, name);
+            patches.Patch(typeof(SoundGate), typeof(FmodManager), name, prefix: nameof(SkipIfMuted),
+                done: $"hooked FmodManager.{name}", consequence: "trap sounds played through it are not muted");
         }
     }
 
     public static void Mute(IReadOnlySet<string> mutedPaths) => _mutedPaths = mutedPaths;
-
-    private static void Patch(Harmony harmony, string target)
-    {
-        try
-        {
-            var original = AccessTools.Method(typeof(FmodManager), target) ?? throw new MissingMethodException(nameof(FmodManager), target);
-
-            harmony.Patch(original, prefix: new HarmonyMethod(typeof(SoundGate), nameof(SkipIfMuted)));
-            _log?.LogInfo($"hooked FmodManager.{target}");
-        }
-        catch (Exception ex)
-        {
-            _log?.LogError($"could not hook FmodManager.{target}: {ex.Message}");
-        }
-    }
 
     /// <summary>The first argument of both targets is the event path. False skips the sound.</summary>
     private static bool SkipIfMuted(string __0)
@@ -53,7 +38,7 @@ internal static class SoundGate
         }
         catch (Exception ex)
         {
-            _log?.LogWarning("sound check failed: " + ex.Message);
+            _patches?.Fail("checking a FmodManager sound", ex);
 
             return true;
         }

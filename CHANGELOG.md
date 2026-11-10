@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Now uses Exiled's Toolkit for its shared parts, so it needs Exiled's Toolkit 0.19.0 or newer.
+- With `LogSounds` on, `quiet-traps.log` now keeps the sounds from earlier game starts too, each start below its own `=====` line. Past 1 MB the file is renamed to `quiet-traps.log.1` and started again.
+- Made for Survival Log 1.1.20719.
+
 ## 0.2.1
 
 - After a game update, Mod Manager can tell you if this mod may need an update.

@@ -2,24 +2,24 @@
 
 Mutes the sound a trap makes once it has caught something. Every other sound plays as normal.
 
-When a trap in Survival Log catches prey, it keeps playing a sound until you collect the catch. With a few traps set, that adds up. Quiet Traps silences that sound, and only that sound: setting, moving, checking and removing traps still sound the same.
+When a trap in Survival Log catches prey, it keeps playing a sound until you collect the catch. With a few traps set, it gets loud. Quiet Traps mutes that sound. Setting, moving, checking and removing a trap still make their usual sounds.
 
 ## Features
 
-- **Catch sounds muted**: every trap catch sound, including the Iron Animal Trap's rattle, is silenced by default.
-- **Pick which ones**: each catch sound has its own setting, so you can keep the ones you want to hear.
-- **Nothing else goes quiet**: the mod mutes four exact sounds and nothing else.
-- **Find a missed sound**: turn on `LogSounds` and the mod writes the sounds it sees to a log file.
+- **Catch sounds muted**: by default, every trap's catch sound is muted, including the Iron Animal Trap's rattle.
+- **One setting per sound**: each catch sound has its own setting, so you can keep the ones you want to hear.
+- **Other sounds still play**: the mod only mutes the three catch sounds and the Iron Animal Trap's rattle.
+- **Sound log**: if a trap sound still plays, turn on `LogSounds` and the mod lists the sounds that play in a log file.
 
-The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together. The Iron Animal Trap also rattles while it holds a catch; that rattle goes with the same setting.
+The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own sound. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so one setting mutes all three. The Iron Animal Trap also rattles while it holds a catch, and the same setting mutes the rattle.
 
 Quiet Traps only changes what you hear. It adds nothing to your save and does not edit game files. You can remove it at any time.
 
 ## Requirements
 
-- Survival Log 1.1.20719. Built for this version; a game update can break it until the mod is updated.
+- Survival Log 1.1.20719. Built for this version, so a game update can break it until the mod is updated.
 - The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
-- [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Quiet Traps does not load without it. It applies settings changed on the Mod Manager's Mods screen without a restart.
+- [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Quiet Traps does not load without it. It also lets settings you change on the Mod Manager's Mods screen apply without a restart.
 - Optional: [Mod Manager](https://www.nexusmods.com/survivallog/mods/73). With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.
 
 ## Install
@@ -32,17 +32,17 @@ Quiet Traps only changes what you hear. It adds nothing to your save and does no
 
 ## Uninstall
 
-Delete `QuietTraps.dll` from the `BepInEx\plugins` folder. For a clean slate, also delete `BepInEx\config\com.dev.survivallog.quiettraps.cfg` and, if it exists, `BepInEx\quiet-traps.log`.
+Delete `QuietTraps.dll` from the `BepInEx\plugins` folder. To remove its settings and log too, also delete `BepInEx\config\com.dev.survivallog.quiettraps.cfg` and, if it exists, `BepInEx\quiet-traps.log`.
 
 ## Configuration
 
-Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created the first time the game starts with the mod. Change them in game on the Mod Manager's Mods screen, where they take effect at once, or edit the file while the game is closed. A trap that already holds a catch changes once you load a save. See [CONFIG.md](CONFIG.md) for every setting.
+Settings live in `BepInEx\config\com.dev.survivallog.quiettraps.cfg`, created the first time the game starts with the mod. Change them in game on the Mod Manager's Mods screen, where they take effect at once, or edit the file while the game is closed. If a trap already holds a catch when you change a setting, its sound only changes after you load a save. See [CONFIG.md](CONFIG.md) for every setting.
 
 ## Troubleshooting
 
 Built against BepInEx `6.0.0-be.788`.
 
-Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.2.2 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
+Check `BepInEx\LogOutput.log` for `===== Quiet Traps 0.2.3 started`, followed by lines starting with `hooked`. A line starting with `could not hook` means part of the mod does not work on this game version.
 
 ## Known issues
 
@@ -50,9 +50,9 @@ None known. If a trap sound still plays, set `LogSounds` to `true` and start the
 
 ## Feedback and bug reports
 
-Found a bug, have an idea, or something feels off? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also post in the Posts tab of the mod's Nexus Mods page. When reporting a bug, attach `BepInEx\LogOutput.log` and, if you turned on `LogSounds`, `BepInEx\quiet-traps.log`.
+Found a bug or have an idea? Come say so on the Core Directive Discord: https://discord.gg/trTsyxUFqg . You can also post in the Posts tab of the mod's Nexus Mods page. When reporting a bug, attach `BepInEx\LogOutput.log` and, if you turned on `LogSounds`, `BepInEx\quiet-traps.log`.
 
-To reach me directly, message `exiled.dev` on Discord; you can find me in the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
+To reach me directly, message `exiled.dev` on Discord. You can find me in the [official Survival Log Discord](https://discord.gg/MZGg4gQAUe). I'm also on X as [@AnExiledDev](https://x.com/AnExiledDev).
 
 A Survival Log wiki with detailed documentation for all of my mods is coming soon.
 
@@ -66,7 +66,7 @@ dotnet build src/QuietTraps -c Release -p:GameDir="C:\path\to\Survival Log" -p:T
 
 `GameDir` is the game folder and `ToolkitDll` is a built `ExiledToolkit.dll`. The defaults in the project file are local paths you will almost certainly need to override. The output DLL is at `src\QuietTraps\bin\Release\QuietTraps.dll`.
 
-The unit tests cover the pure muting rules and need nothing from the game:
+The unit tests cover which sounds get muted and logged, and need nothing from the game:
 
 ```
 dotnet test tests/QuietTraps.Tests

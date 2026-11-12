@@ -1,9 +1,14 @@
 # Changelog
 
+## 0.2.3
+
+- Clearer wording in the settings.
+- Made for Survival Log 1.1.20719.
+
 ## 0.2.2
 
-- Now uses Exiled's Toolkit for its shared parts, so it needs Exiled's Toolkit 0.19.0 or newer.
-- With `LogSounds` on, `quiet-traps.log` now keeps the sounds from earlier game starts too, each start below its own `=====` line. Past 1 MB the file is renamed to `quiet-traps.log.1` and started again.
+- Now needs Exiled's Toolkit 0.19.0 or newer.
+- With `LogSounds` on, `quiet-traps.log` no longer starts empty each time you start the game. Each game start gets its own `=====` line. When the file passes 1 MB, it is renamed to `quiet-traps.log.1` and a new one starts.
 - Made for Survival Log 1.1.20719.
 
 ## 0.2.1
@@ -14,8 +19,8 @@
 ## 0.2.0
 
 - Mod Manager's Mods screen links to this changelog.
-- On the Mods screen, the diagnostics settings are in the Advanced group, which starts folded.
-- Settings changed on the Mod Manager's Mods screen take effect at once. A trap that already holds a catch changes once you load a save.
+- On the Mods screen, the diagnostics settings are in the Advanced group, which starts collapsed.
+- Settings changed on the Mod Manager's Mods screen take effect at once. If a trap already holds a catch when you change a setting, its sound only changes after you load a save.
 - Mod Manager's Mods screen shows the mod's name, description, category and links.
 - Exiled's Toolkit 0.4.0 or newer is optional. With it, settings you change on the Mods screen take effect right away. Without it, they take effect the next time you start the game.
 

@@ -15,7 +15,7 @@ namespace QuietTraps;
 public sealed class Plugin : BasePlugin
 {
     private const string Guid = "com.dev.survivallog.quiettraps";
-    private const string Version = "0.2.2";
+    private const string Version = "0.2.3";
 
     /// <summary>The sound log keeps earlier game starts, so past 1 MB the file is moved aside and started again.</summary>
     private const long MaxLogBytes = 1024 * 1024;
@@ -27,11 +27,11 @@ public sealed class Plugin : BasePlugin
         var liveCaptureCage = BindOneTrap("LiveCaptureCage", "Live Capture Cage", "「活捉笼」");
         var simpleBirdNet = BindOneTrap("SimpleBirdNet", "Simple Bird Net", "「简易捕鸟网」");
         var otherTraps = Bind("OtherTraps",
-            "When true, the catch sound the Simple Mousetrap, Iron Animal Trap and Auto Trap Cage share is muted, and so is the Iron Animal Trap's rattle. The game gives all three the same sound, so they share this setting. Every other trap sound still plays.",
-            "设为 true 时，「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」捕获猎物后发出的声音会被静音（游戏中这三种陷阱使用同一个声音），「铁制捕兽夹」的哐啷声也会被静音。其他陷阱声音照常播放。");
+            "When true, the sound the Simple Mousetrap, Iron Animal Trap and Auto Trap Cage make while they hold a catch is muted, along with the Iron Animal Trap's rattle. The game gives all three traps the same sound, so one setting covers them. Every other trap sound still plays.",
+            "设为 true 时，「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」捕获猎物后发出的声音会被静音，「铁制捕兽夹」的哐啷声也会被静音。游戏里这三种陷阱用的是同一个声音，所以共用这一项设置。其他陷阱声音照常播放。");
         var isLoggingSounds = Config.Bind("Diagnostics", "LogSounds", false,
-            new ConfigDescription("When true, the first three times each sound starts are written to BepInEx\\quiet-traps.log with the time, marked (muted) when this mod silenced it. Turn it on to find a trap sound that still plays.\n" +
-            "设为 true 时，每个声音的前三次播放都会连同时间写入 BepInEx\\quiet-traps.log，被本模组静音的会标注 (muted)。想找出仍在播放的陷阱声音时再打开。", null, "ModManager.Advanced"));
+            new ConfigDescription("When true, the first three times each sound plays are written to BepInEx\\quiet-traps.log with the time. Sounds this mod muted are marked (muted). Turn it on to find a trap sound that still plays.\n" +
+            "设为 true 时，每个声音的前三次播放会连同时间写入 BepInEx\\quiet-traps.log，被本模组静音的声音会标注 (muted)。如果有陷阱声音仍在播放，可以打开它来查找。", null, "ModManager.Advanced"));
         // The file is the sound log, so it stays off until LogSounds turns it on; every line still goes to the BepInEx log.
         var log = new ModLog(Log, "quiet-traps.log") { MaxFileBytes = MaxLogBytes, IsFileOn = false };
         var patches = new PatchKit(new Harmony(Guid), log.Write);

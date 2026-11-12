@@ -1,18 +1,18 @@
 Name: Quiet Traps
-Summary: Mutes the noise a trap keeps making after it catches something, including the Iron Animal Trap's rattle, so a yard full of traps stops nagging you until you collect. Setting, checking, moving and removing traps sound the same as always. Each catch sound has its own switch if you want to keep one.
+Summary: Mutes the sound a trap keeps playing after it catches something, including the Iron Animal Trap's rattle, so traps waiting to be emptied stay quiet. Setting, checking, moving and removing traps still make their usual sounds. Each catch sound has its own setting, so you can keep the ones you want to hear, and the mod adds nothing to your save.
 
 Description (BBCode):
 [center][img]https://sldb.core-directive.com/media/save/1-save-safe.png[/img][/center]
 
-When a trap catches prey, it keeps making noise until you collect the catch. With a few traps set, that adds up. Quiet Traps silences that sound, and only that sound: setting, moving, checking and removing traps still sound the same.
+When a trap catches prey, it keeps making noise until you collect the catch. With a few traps set, it gets loud. Quiet Traps mutes that sound. Setting, moving, checking and removing a trap still make their usual sounds.
 
 [size=5]Main features[/size]
 [list]
-[*][b]Catch sounds muted[/b]: every trap catch sound, including the Iron Animal Trap's rattle, is silenced by default.[/*]
-[*][b]Pick which ones[/b]: each catch sound has its own setting, so you can keep the ones you want to hear.[/*]
-[*][b]Nothing else goes quiet[/b]: the mod mutes four exact sounds and nothing else.[/*]
+[*][b]Catch sounds muted[/b]: by default, every trap's catch sound is muted, including the Iron Animal Trap's rattle.[/*]
+[*][b]One setting per sound[/b]: each catch sound has its own setting, so you can keep the ones you want to hear.[/*]
+[*][b]Other sounds still play[/b]: the mod only mutes the three catch sounds and the Iron Animal Trap's rattle.[/*]
 [/list]
-The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so they are turned on and off together. The Iron Animal Trap also rattles while it holds a catch; that rattle goes with the same setting.
+The game has five traps but only three catch sounds. The Live Capture Cage and the Simple Bird Net each have their own sound. The Simple Mousetrap, the Iron Animal Trap and the Auto Trap Cage share one, so one setting mutes all three. The Iron Animal Trap also rattles while it holds a catch, and the same setting mutes the rattle.
 
 Quiet Traps only changes what you hear. It adds nothing to your save and does not edit game files. You can remove it at any time.
 
@@ -28,14 +28,14 @@ None known. If a trap sound still plays, turn on [font=Courier New]LogSounds[/fo
 [list]
 [*]Survival Log 1.1.20719. A game update can break it until the mod is updated.[/*]
 [*][url=https://www.nexusmods.com/survivallog/mods/12]BepInEx for Survival Log[/url]. Install it first.[/*]
-[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 or newer. Quiet Traps does not load without it. It applies settings changed on the Mod Manager's Mods screen without a restart.[/*]
+[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 or newer. Quiet Traps does not load without it. It also lets settings you change on the Mod Manager's Mods screen apply without a restart.[/*]
 [*]Optional: [url=https://www.nexusmods.com/survivallog/mods/73]Mod Manager[/url]. With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.[/*]
 [/list]
 
 [size=5]Installation[/size]
 [list=1]
 [*]Install [url=https://www.nexusmods.com/survivallog/mods/12]BepInEx[/url] [i](if no other mods were installed before, start the game once so BepInEx finishes setup, then quit)[/i].[/*]
-[*]Install Exiled's Toolkit the same way. Download its zip and extract it into the game folder.[/*]
+[*]Install [url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url]. Download its zip and extract it into the game folder.[/*]
 [*]Download the zip from the Files tab.[/*]
 [*]Extract it into the game folder (the folder with [font=Courier New]SurvivalLog.exe[/font]). The zip holds a BepInEx folder, so the DLL lands in the right place. When asked, merge the folders. The result should be:
 [code]C:\Program Files (x86)\Steam\steamapps\common\Survival Log\BepInEx\plugins\QuietTraps.dll[/code][/*]
@@ -45,11 +45,11 @@ None known. If a trap sound still plays, turn on [font=Courier New]LogSounds[/fo
 Delete [font=Courier New]QuietTraps.dll[/font] from the [font=Courier New]BepInEx\plugins[/font] folder.
 
 [size=5]Configuration[/size]
-To change settings, edit [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font] while the game is closed, or do it in game on the Mod Manager's Mods screen, where changes take effect at once (see [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url] for every setting). A trap that already holds a catch changes once you load a save.
+To change settings, edit [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font] while the game is closed, or do it in game on the Mod Manager's Mods screen, where changes take effect at once (see [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url] for every setting). If a trap already holds a catch when you change a setting, its sound only changes after you load a save.
 
 [size=5]Feedback[/size]
 Found a bug or have an idea? Come say hi on the [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url], or post in this page's Posts tab. For bugs, please include [font=Courier New]BepInEx\LogOutput.log[/font] and, if you turned on [font=Courier New]LogSounds[/font], [font=Courier New]BepInEx\quiet-traps.log[/font].
-To reach me directly, message [b]exiled.dev[/b] on Discord; you can find me in the [url=https://discord.gg/MZGg4gQAUe]official Survival Log Discord[/url]. I'm also on X as [url=https://x.com/AnExiledDev]@AnExiledDev[/url].
+To reach me directly, message [b]exiled.dev[/b] on Discord. You can find me in the [url=https://discord.gg/MZGg4gQAUe]official Survival Log Discord[/url]. I'm also on X as [url=https://x.com/AnExiledDev]@AnExiledDev[/url].
 
 [size=5]Source and license[/size]
 Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps]github.com/AnExiledDev/SurvivalLog-QuietTraps[/url]
@@ -57,15 +57,15 @@ Open source under MIT: [url=https://github.com/AnExiledDev/SurvivalLog-QuietTrap
 [line]
 [size=5]简体中文[/size]
 
-陷阱捕获猎物后，会一直发出声音，直到你把猎物取走。放了几个陷阱，声音就叠在一起了。Quiet Traps 只静音这一种声音：放置、移动、查看和拆除陷阱的声音都和原来一样。
+陷阱捕获猎物后，会一直发出声音，直到你把猎物取走。放了几个陷阱，声音就叠在一起，很吵。Quiet Traps 会把这个声音静音。放置、移动、查看和拆除陷阱的声音都和原来一样。
 
 [size=5]主要功能[/size]
 [list]
 [*][b]捕获声音静音[/b]：所有陷阱的捕获声音默认都会被静音，包括「铁制捕兽夹」的哐啷声。[/*]
-[*][b]自行选择[/b]：每种捕获声音都有单独的设置，想听的可以保留。[/*]
-[*][b]其他声音照常[/b]：模组只静音四个指定的声音，其他一概不动。[/*]
+[*][b]每种声音单独设置[/b]：每种捕获声音都有单独的设置，想听的可以保留。[/*]
+[*][b]其他声音照常[/b]：模组只静音三种捕获声音和「铁制捕兽夹」的哐啷声。[/*]
 [/list]
-游戏里有五种陷阱，但只有三种捕获声音。「活捉笼」和「简易捕鸟网」各有自己的声音。「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」共用一个声音，所以它们一起开关。「铁制捕兽夹」捕获猎物后还会发出哐啷声，这个声音也归同一项设置。
+游戏里有五种陷阱，但只有三种捕获声音。「活捉笼」和「简易捕鸟网」各有自己的声音。「简易捕鼠夹」、「铁制捕兽夹」和「自动诱捕笼」共用一个声音，所以一项设置就能把这三种都静音。「铁制捕兽夹」捕获猎物后还会发出哐啷声，同一项设置也会把它静音。
 
 Quiet Traps 只改变你听到的声音，不会往存档里添加任何内容，也不会修改游戏文件，随时可以移除。
 
@@ -80,14 +80,14 @@ Quiet Traps 只改变你听到的声音，不会往存档里添加任何内容�
 [list]
 [*]Survival Log 1.1.20719。游戏更新后模组可能暂时失效，直到模组更新为止。[/*]
 [*][url=https://www.nexusmods.com/survivallog/mods/12]BepInEx for Survival Log[/url]，请先安装。[/*]
-[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 或更新版本。没有它本模组不会加载。它让在 Mod Manager 的「模组」界面改动的设置无需重启游戏即可生效。[/*]
+[*][url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url] 0.19.0 或更新版本。没有它本模组不会加载。有了它，在 Mod Manager 的「模组」界面改动的设置无需重启游戏即可生效。[/*]
 [*]可选：[url=https://www.nexusmods.com/survivallog/mods/73]Mod Manager[/url]。装了它，可以在游戏里它的「模组」界面修改每项设置，并看到每项的说明，不用打开配置文件。[/*]
 [/list]
 
 [size=5]安装[/size]
 [list=1]
 [*]安装 [url=https://www.nexusmods.com/survivallog/mods/12]BepInEx[/url] [i]（如果之前没有装过其他模组，先启动一次游戏，让 BepInEx 完成初始化，然后退出）[/i]。[/*]
-[*]用同样的方式安装 Exiled's Toolkit，下载它的压缩包并解压到游戏目录。[/*]
+[*]安装 [url=https://www.nexusmods.com/survivallog/mods/61]Exiled's Toolkit[/url]：下载它的压缩包并解压到游戏目录。[/*]
 [*]在「文件」页下载压缩包。[/*]
 [*]把压缩包解压到游戏目录（[font=Courier New]SurvivalLog.exe[/font] 所在的文件夹）。压缩包里带有 BepInEx 文件夹，DLL 会自动放到正确位置。如果提示合并文件夹，选择合并。解压后应为：
 [code]C:\Program Files (x86)\Steam\steamapps\common\Survival Log\BepInEx\plugins\QuietTraps.dll[/code][/*]
@@ -97,10 +97,10 @@ Quiet Traps 只改变你听到的声音，不会往存档里添加任何内容�
 从 [font=Courier New]BepInEx\plugins[/font] 文件夹中删除 [font=Courier New]QuietTraps.dll[/font]。
 
 [size=5]配置[/size]
-可以在游戏内 Mod Manager 的「模组」界面修改，改动立即生效；也可以在游戏关闭时编辑 [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font]。配置文件中每项设置都有中文说明，完整说明见 [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url]（英文）。已经捕获猎物的陷阱，要重新读档后才会改变。
+可以在游戏内 Mod Manager 的「模组」界面修改，改动立即生效。也可以在游戏关闭时编辑 [font=Courier New]BepInEx\config\com.dev.survivallog.quiettraps.cfg[/font]。配置文件中每项设置都有中文说明，完整说明见 [url=https://github.com/AnExiledDev/SurvivalLog-QuietTraps/blob/main/CONFIG.md]CONFIG.md[/url]（英文）。如果改设置时陷阱里已经有猎物，要重新读档后它的声音才会改变。
 
 [size=5]反馈[/size]
-发现 bug 或有好点子？欢迎来 [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url] 打个招呼，或在本页的「Posts」标签里发帖。报告 bug 时，请附上 [font=Courier New]BepInEx\LogOutput.log[/font]；如果打开了 [font=Courier New]LogSounds[/font]，也请附上 [font=Courier New]BepInEx\quiet-traps.log[/font]。
+发现 bug 或有好点子？欢迎来 [url=https://discord.gg/trTsyxUFqg]Core Directive Discord[/url] 打个招呼，或在本页的「Posts」标签里发帖。报告 bug 时，请附上 [font=Courier New]BepInEx\LogOutput.log[/font]。如果打开了 [font=Courier New]LogSounds[/font]，也请附上 [font=Courier New]BepInEx\quiet-traps.log[/font]。
 想直接联系我，可以在 Discord 上给 [b]exiled.dev[/b] 发消息，我在 [url=https://discord.gg/MZGg4gQAUe]Survival Log 官方 Discord[/url] 里。也可以在 X 上找我：[url=https://x.com/AnExiledDev]@AnExiledDev[/url]。
 
 [size=5]源代码与许可[/size]

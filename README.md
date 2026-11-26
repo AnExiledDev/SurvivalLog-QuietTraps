@@ -17,7 +17,7 @@ Quiet Traps only changes what you hear. It adds nothing to your save and does no
 
 ## Requirements
 
-- Survival Log 1.1.20719. Built for this version, so a game update can break it until the mod is updated.
+- Survival Log 1.1.21671. Built for this version, so a game update can break it until the mod is updated.
 - The [BepInEx Pack for Survival Log](https://www.nexusmods.com/survivallog/mods/12), the BepInEx 6 (IL2CPP) build for the game.
 - [Exiled's Toolkit](https://github.com/AnExiledDev/SurvivalLog-ExiledToolkit) 0.19.0 or newer. Quiet Traps does not load without it. It also lets settings you change on the Mod Manager's Mods screen apply without a restart.
 - Optional: [Mod Manager](https://www.nexusmods.com/survivallog/mods/73). With it, you can change every setting in game on its Mods screen and see what each one does, without opening the config file.
